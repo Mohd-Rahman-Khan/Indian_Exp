@@ -1,0 +1,216 @@
+import {StyleSheet, Dimensions, Platform} from 'react-native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+
+export default StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f3f3f3',
+  },
+  logo: {
+    width: wp('70%'),
+    height: hp('3%'),
+    marginTop: 20,
+    // top: '60%',
+    // left: '3%',
+  },
+  deshboard: {
+    flexDirection: 'row',
+    //width: wp('100%'),
+    height: hp('25%'),
+    backgroundColor: '#000000',
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
+    marginTop: 20,
+    marginHorizontal: 10,
+    //top: '10%',
+    //left: '1.5%',
+  },
+  profilename: {
+    // width: wp('40%'),
+    color: '#ffffff',
+    fontSize: 20,
+    top: '9%',
+    left: '10%',
+    fontFamily: 'Arial',
+    fontWeight: 'bold',
+    letterSpacing: 1,
+  },
+  place: {
+    color: '#8d8d8d',
+    fontSize: 14,
+    top: '9%',
+    left: '10%',
+    fontFamily: 'Arial',
+    letterSpacing: 1,
+  },
+  empid: {
+    flexDirection: 'row',
+  },
+  empids: {
+    fontSize: 14,
+    color: '#8d8d8d',
+    fontFamily: 'Arial',
+    left: '10%',
+    top: '30%',
+    letterSpacing: 2,
+    // width: '80%'
+  },
+  mobile: {
+    fontSize: 14,
+    color: '#8d8d8d',
+    fontFamily: 'Arial',
+    left: '10%',
+    top: '32%',
+    //letterSpacing: 1,
+  },
+  group: {
+    left: '90%',
+    width: wp('50%'),
+    bottom: '60%',
+  },
+  profilepic: {
+    width: wp('31%'),
+    height: hp('20%'),
+    left: '112%',
+    bottom: '40%',
+    opacity: 15,
+  },
+  attendance: {
+    flexDirection: 'row',
+    width: wp('94%'),
+    height: hp('15%'),
+    backgroundColor: 'white',
+    top: '10%',
+    borderBottomRightRadius: 10,
+    borderBottomLeftRadius: 10,
+  },
+  attendancepart: {
+    flexDirection: 'row',
+    fontFamily: 'Arial',
+    fontSize: 20,
+    color: '#000000',
+    //marginLeft: 20,
+    fontWeight: 'bold',
+  },
+  viewall: {
+    fontSize: 14,
+    color: '#da0b0b',
+    top: '7%',
+    left: '190%',
+  },
+  viewpart: {
+    flexDirection: 'row',
+  },
+  timingpart: {
+    flexDirection: 'row',
+  },
+  attendancemainview: {
+    left: '3%',
+  },
+  maincheckin: {
+    flexDirection: 'row',
+    //alignItems: 'center',
+  },
+  checkintime: {
+    marginLeft: 10,
+    fontFamily: 'Arial',
+    fontSize: 14,
+    color: '#000000',
+    // marginTop: Platform.OS == 'ios' ? 0 : 4,
+  },
+  checkInTypeText: {
+    marginLeft: 10,
+    fontFamily: 'Arial',
+    fontSize: 14,
+    color: '#000000',
+    //marginTop: Platform.OS == 'ios' ? 0 : 4,
+  },
+  checkout: {
+    fontFamily: 'Arial',
+    fontSize: 14,
+    color: '#000000',
+    marginLeft: 10,
+    //marginTop: Platform.OS == 'ios' ? 0 : 4,
+  },
+  checkoutbtn: {
+    backgroundColor: 'grey',
+    borderRadius: 40,
+    width: wp('60%'),
+    height: hp('7%'),
+    left: '20%',
+    marginTop: 50,
+    marginBottom: 15,
+    // bottom: -10,
+  },
+  btnText: {
+    color: '#ffffff',
+    fontSize: 16,
+    textAlign: 'center',
+    top: '30%',
+    fontWeight: 'bold',
+  },
+  boxview: {
+    flexDirection: 'row',
+  },
+  boxcontent: {
+    flexDirection: 'row',
+  },
+  return: {
+    top: '10%',
+    left: '50%',
+  },
+  zerodesign: {
+    width: wp('13%'),
+    height: hp('3%'),
+    borderRadius: 10,
+    backgroundColor: '#f3f3f3',
+    left: '290%',
+    top: '10%',
+  },
+  zerotext: {
+    textAlign: 'center',
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#000000',
+  },
+  unsold: {
+    fontSize: 14,
+    color: '#000000',
+    fontWeight: 'bold',
+    top: '59%',
+    letterSpacing: 1,
+  },
+  returntext: {
+    flexDirection: 'column',
+  },
+  unsoldtext: {
+    top: '80%',
+    fontSize: 14,
+    color: '#8d8d8d',
+    left: '8%',
+  },
+  boxlayout: {
+    flexDirection: 'row',
+    //marginLeft: 15,
+    //marginTop: 15,
+    justifyContent: 'space-evenly',
+    marginTop: 10,
+    //marginHorizontal: '2%',
+  },
+  boxview1: {
+    //left: '4%',
+  },
+  boxview2: {
+    top: '2%',
+  },
+  boxview3: {
+    left: '6%',
+    top: '2%',
+  },
+  cardContainer: {
+    width: '45%',
+  },
+});

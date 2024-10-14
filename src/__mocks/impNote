@@ -1,0 +1,1 @@
+The minimum target SDK for the React Native Razorpay is 19. If your project targets an SDK below 19, bump up the minSDK target in android/build.gradle.

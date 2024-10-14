@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "188986853427",
+    "project_id": "tiden-eb974",
+    "storage_bucket": "tiden-eb974.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:188986853427:android:39c5949d9ee9c1a728fb46",
+        "android_client_info": {
+          "package_name": "com.indianexpress"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "188986853427-06jqvootfqh8jms93ok9280vq7gblubo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8h6FXpEUhFhgzo63-FdTqiewEVTtnKlc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "188986853427-06jqvootfqh8jms93ok9280vq7gblubo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
