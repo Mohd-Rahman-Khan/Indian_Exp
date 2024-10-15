@@ -29,6 +29,7 @@ import {
   PrintOrderDashboard,
   SupplyCopy,
   SelectionOfPrintOrder,
+  SamplingCopyList,
 } from '../../Screen';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 import images from '../../Image';
@@ -126,6 +127,11 @@ export default function AppNavigator() {
         <Stack.Screen
           name="PrintOrderList"
           component={PrintOrderList}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="SamplingCopyList"
+          component={SamplingCopyList}
           options={{headerShown: false}}
         />
         <Stack.Screen

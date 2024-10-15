@@ -51,7 +51,7 @@ export default function SelectionOfPrintOrder({route, navigation}) {
           text="PO Sampling Copies"
           fullWidth={true}
           handleCardClick={() => {
-            //navigation.navigate('SupplyCopy');
+            navigation.navigate('SupplyCopy');
           }}
         />
       </View>

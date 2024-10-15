@@ -188,162 +188,174 @@ const SupplyCopy = ({navigation}) => {
   };
 
   return (
-    <ScrollView>
-      <AppLoader visible={loading} />
-      {showCalender ? (
-        <CalenderComp
-          selectFromDate={selectFromDate}
-          dateType={dateType}
-          fromDate={selectedFromDate}
-          closeModal={() => {
-            setshowCalender(!showCalender);
-            setselectFromDate(false);
-            setselectPODateDate(false);
-          }}
-          minDate={moment(new Date()).format('YYYY-MM-DD')}
-          setselectedDate={date => {
-            //console.log('SelectedDate', date);
-            const reqFormatDt = moment(date).format('DD-MM-YYYY, dddd');
-            setshowCalender(!showCalender);
-            if (dateType == 'FD') {
-              setselectedFromDate(reqFormatDt);
-              setpassFromDateToApi(date);
-            } else if (dateType == 'TD') {
-              if (reqFormatDt < selectedFromDate) {
-                Alert.alert(
-                  'Oops',
-                  'To date should be greater than from date.',
-                  [{text: 'OK', onPress: async () => {}}],
-                  {cancelable: false},
-                );
+    <>
+      <ScrollView>
+        <AppLoader visible={loading} />
+        {showCalender ? (
+          <CalenderComp
+            selectFromDate={selectFromDate}
+            dateType={dateType}
+            fromDate={selectedFromDate}
+            closeModal={() => {
+              setshowCalender(!showCalender);
+              setselectFromDate(false);
+              setselectPODateDate(false);
+            }}
+            minDate={moment(new Date()).format('YYYY-MM-DD')}
+            setselectedDate={date => {
+              //console.log('SelectedDate', date);
+              const reqFormatDt = moment(date).format('DD-MM-YYYY, dddd');
+              setshowCalender(!showCalender);
+              if (dateType == 'FD') {
+                setselectedFromDate(reqFormatDt);
+                setpassFromDateToApi(date);
+              } else if (dateType == 'TD') {
+                if (reqFormatDt < selectedFromDate) {
+                  Alert.alert(
+                    'Oops',
+                    'To date should be greater than from date.',
+                    [{text: 'OK', onPress: async () => {}}],
+                    {cancelable: false},
+                  );
+                } else {
+                  setselectedToDate(reqFormatDt);
+                  setpassToDateToApi(date);
+                }
               } else {
-                setselectedToDate(reqFormatDt);
-                setpassToDateToApi(date);
               }
-            } else {
+            }}
+          />
+        ) : null}
+        <View style={styles.container}>
+          <CustomDropdown
+            headerTitle="Depot Name"
+            data={depotArr}
+            selectedItem={depotItem?.name}
+            itemHandler={item => {
+              setDepotItem(item);
+            }}
+            search={true}
+            disable={
+              userData?.role == 'Depot Salesman' ||
+              userData?.role == 'Parcel Vendor'
+                ? true
+                : false
             }
-          }}
-        />
-      ) : null}
-      <View style={styles.container}>
-        <CustomDropdown
-          headerTitle="Depot Name"
-          data={depotArr}
-          selectedItem={depotItem?.name}
-          itemHandler={item => {
-            setDepotItem(item);
-          }}
-          search={true}
-          disable={
-            userData?.role == 'Depot Salesman' ||
-            userData?.role == 'Parcel Vendor'
-              ? true
-              : false
-          }
-        />
+          />
 
-        <View
-          style={{
-            backgroundColor: 'white',
-            marginTop: 20,
-          }}>
-          <Text style={styles.dropdownHeading}>From Date</Text>
-          <TouchableOpacity
-            onPress={() => {
-              setshowCalender(true);
-              setdateType('FD');
-            }}
+          <View
             style={{
-              height: 46,
-              width: '100%',
-              backgroundColor: 'lightgrey',
-              paddingHorizontal: 16,
-              justifyContent: 'center',
+              backgroundColor: 'white',
+              marginTop: 20,
             }}>
-            <Text style={{color: COLORS.black, fontSize: 16}}>
-              {selectedFromDate}
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <View
-          style={{
-            backgroundColor: 'white',
-            marginTop: 20,
-          }}>
-          <Text style={styles.dropdownHeading}>To Date</Text>
-          <TouchableOpacity
-            onPress={() => {
-              setshowCalender(true);
-              setdateType('TD');
-            }}
-            style={{
-              height: 46,
-              width: '100%',
-              backgroundColor: 'lightgrey',
-              paddingHorizontal: 16,
-              justifyContent: 'center',
-            }}>
-            <Text style={{color: COLORS.black, fontSize: 16}}>
-              {selectedToDate}
-            </Text>
-          </TouchableOpacity>
-        </View>
-
-        <View
-          style={{
-            marginTop: 10,
-          }}>
-          {publicationList?.length > 0 ? (
-            publicationList.map(item => {
-              return (
-                <View key={item?.id}>
-                  {rowItemView(item?.trade_name, true, 4, true, item)}
-                </View>
-              );
-            })
-          ) : (
-            <View
-              style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                paddingVertical: 20,
-              }}>
-              <Text style={{color: 'black', fontWeight: 'bold', fontSize: 16}}>
-                Supply list not found
-              </Text>
-            </View>
-          )}
-        </View>
-
-        <View style={styles.buttongroup}>
-          <View>
+            <Text style={styles.dropdownHeading}>From Date</Text>
             <TouchableOpacity
-              disabled={publicationList.length > 0 ? false : true}
-              onPress={() => {}}>
-              <View
-                style={[
-                  styles.canclebtn,
-                  {
-                    opacity: publicationList.length > 0 ? 1 : 0.3,
-                    borderColor: '#DA0B0B',
-                    backgroundColor: 'white',
-                  },
-                ]}>
-                <Text
-                  style={[
-                    styles.canclebtntext,
-                    {
-                      color: '#DA0B0B',
-                    },
-                  ]}>
-                  SUBMIT
-                </Text>
-              </View>
+              onPress={() => {
+                setshowCalender(true);
+                setdateType('FD');
+              }}
+              style={{
+                height: 46,
+                width: '100%',
+                backgroundColor: 'lightgrey',
+                paddingHorizontal: 16,
+                justifyContent: 'center',
+              }}>
+              <Text style={{color: COLORS.black, fontSize: 16}}>
+                {selectedFromDate}
+              </Text>
             </TouchableOpacity>
           </View>
+          <View
+            style={{
+              backgroundColor: 'white',
+              marginTop: 20,
+            }}>
+            <Text style={styles.dropdownHeading}>To Date</Text>
+            <TouchableOpacity
+              onPress={() => {
+                setshowCalender(true);
+                setdateType('TD');
+              }}
+              style={{
+                height: 46,
+                width: '100%',
+                backgroundColor: 'lightgrey',
+                paddingHorizontal: 16,
+                justifyContent: 'center',
+              }}>
+              <Text style={{color: COLORS.black, fontSize: 16}}>
+                {selectedToDate}
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          <View
+            style={{
+              marginTop: 10,
+            }}>
+            {publicationList?.length > 0 ? (
+              publicationList.map(item => {
+                return (
+                  <View key={item?.id}>
+                    {rowItemView(item?.trade_name, true, 4, true, item)}
+                  </View>
+                );
+              })
+            ) : (
+              <View
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  paddingVertical: 20,
+                }}>
+                <Text
+                  style={{color: 'black', fontWeight: 'bold', fontSize: 16}}>
+                  Supply list not found
+                </Text>
+              </View>
+            )}
+          </View>
+
+          <View style={styles.buttongroup}>
+            <View>
+              <TouchableOpacity
+                disabled={publicationList.length > 0 ? false : true}
+                onPress={() => {}}>
+                <View
+                  style={[
+                    styles.canclebtn,
+                    {
+                      opacity: publicationList.length > 0 ? 1 : 0.3,
+                      borderColor: '#DA0B0B',
+                      backgroundColor: 'white',
+                    },
+                  ]}>
+                  <Text
+                    style={[
+                      styles.canclebtntext,
+                      {
+                        color: '#DA0B0B',
+                      },
+                    ]}>
+                    SUBMIT
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
+      </ScrollView>
+      <View style={styles.bottomView}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('SamplingCopyList');
+          }}
+          style={styles.addIconContainer}>
+          <Image style={styles.plusIcon} source={images.file} />
+        </TouchableOpacity>
       </View>
-    </ScrollView>
+    </>
   );
 };
 
