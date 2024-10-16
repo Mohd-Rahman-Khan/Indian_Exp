@@ -517,42 +517,41 @@ export default function PrintOrderList({route, navigation}) {
                               editItem => editItem?.editable,
                             );
 
-                            if (listItem?.trade > 0) {
-                              let newArr = findEditableItem?.publications.map(
-                                rederItem => {
-                                  if (rederItem?.id == listItem?.id) {
-                                    console.log('findEditableItem', rederItem);
-                                    rederItem.updated_value =
-                                      rederItem?.updated_value - 1;
-                                    rederItem.difference =
-                                      rederItem.updated_value -
-                                      rederItem?.trade;
-                                    return {...rederItem};
-                                  } else {
-                                    return rederItem;
-                                  }
-                                },
-                              );
+                            //sif (listItem?.trade > 0) {
+                            let newArr = findEditableItem?.publications.map(
+                              rederItem => {
+                                if (rederItem?.id == listItem?.id) {
+                                  console.log('findEditableItem', rederItem);
+                                  rederItem.updated_value =
+                                    rederItem?.updated_value - 1;
+                                  rederItem.difference =
+                                    rederItem.updated_value - rederItem?.trade;
+                                  return {...rederItem};
+                                } else {
+                                  return rederItem;
+                                }
+                              },
+                            );
 
-                              // console.log('findEditableItem', newArr);
-                              let updatePrintOrderList = printOrderList.map(
-                                pItem => {
-                                  if (
-                                    pItem?.print_order_id ==
-                                    newArr?.print_order_id
-                                  ) {
-                                    return {...newArr};
-                                  } else {
-                                    return {...pItem};
-                                  }
-                                },
-                              );
-                              // console.log(
-                              //   'updatePrintOrderList',
-                              //   updatePrintOrderList,
-                              // );
-                              setprintOrderList(updatePrintOrderList);
-                            }
+                            // console.log('findEditableItem', newArr);
+                            let updatePrintOrderList = printOrderList.map(
+                              pItem => {
+                                if (
+                                  pItem?.print_order_id ==
+                                  newArr?.print_order_id
+                                ) {
+                                  return {...newArr};
+                                } else {
+                                  return {...pItem};
+                                }
+                              },
+                            );
+                            // console.log(
+                            //   'updatePrintOrderList',
+                            //   updatePrintOrderList,
+                            // );
+                            setprintOrderList(updatePrintOrderList);
+                            //}
                           }}
                           style={styles.iconButtonContainer}>
                           <Image
@@ -579,7 +578,7 @@ export default function PrintOrderList({route, navigation}) {
                               editItem => editItem?.editable,
                             );
 
-                            if (listItem?.trade > 0) {
+                            if (listItem?.trade >= 0) {
                               let newArr = findEditableItem?.publications.map(
                                 rederItem => {
                                   if (rederItem?.id == listItem?.id) {
@@ -891,14 +890,16 @@ export default function PrintOrderList({route, navigation}) {
 
       {userDetail?.role == 'Depot Salesman' ||
       userDetail?.role == 'Parcel Vendor' ? (
-        <View style={styles.bottomView}>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('PrintOrder');
-            }}
-            style={styles.addIconContainer}>
-            <Image style={styles.plusIcon} source={images.plusIcon} />
-          </TouchableOpacity>
+        <View style={{justifyContent: 'flex-end', alignItems: 'flex-end'}}>
+          <View style={styles.bottomView}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('PrintOrder');
+              }}
+              style={styles.addIconContainer}>
+              <Image style={styles.plusIcon} source={images.plusIcon} />
+            </TouchableOpacity>
+          </View>
         </View>
       ) : null}
     </View>

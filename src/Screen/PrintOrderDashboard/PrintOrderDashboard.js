@@ -364,7 +364,15 @@ export default function PrintOrderDashboard({route, navigation}) {
             style={styles.addIconContainer}>
             <Image style={styles.plusIcon} source={images.plusIcon} />
           </TouchableOpacity>
-        ) : null}
+        ) : (
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('PrintOrder');
+            }}
+            style={styles.addIconContainer}>
+            <Image style={styles.plusIcon} source={images.plusIcon} />
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );

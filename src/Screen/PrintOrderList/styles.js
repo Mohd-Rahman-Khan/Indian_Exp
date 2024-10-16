@@ -3,7 +3,7 @@ import COLORS from '../../GlobalConstants/COLORS';
 export default StyleSheet.create({
   container: {flex: 1},
   bottomView: {
-    width: '100%',
+    width: '10%',
     //height: 50,
     backgroundColor: 'transparent',
     justifyContent: 'center',

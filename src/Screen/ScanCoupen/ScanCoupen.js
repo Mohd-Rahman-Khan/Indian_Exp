@@ -101,7 +101,11 @@ const ScanCoupen = ({navigation, route}) => {
       setisLoading(true);
       let validScannedQrIds = scanQrIds.map(item => {
         let formatData = item.split('$');
-        return formatData[0];
+        if (formatData?.length == 6) {
+          return formatData[0];
+        } else {
+          return formatData[1];
+        }
       });
 
       let inValidScannedQrIds = invalidScanQrIds.map(item => {
