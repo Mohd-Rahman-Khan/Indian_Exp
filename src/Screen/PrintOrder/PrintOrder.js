@@ -619,19 +619,28 @@ const PrintOrder = ({navigation}) => {
                 );
               }
             } else if (dateType == 'FD') {
-              if (
-                moment(date).isoWeekday() == 6 ||
-                moment(date).isoWeekday() == 7
-              ) {
+              if (reqFormatDt == selectedPODate) {
                 Alert.alert(
                   'Oops',
-                  'Please select only weekday date.',
+                  'Please select different date for PO',
                   [{text: 'OK', onPress: async () => {}}],
                   {cancelable: false},
                 );
               } else {
-                setselectedFromDate(reqFormatDt);
-                setpassFromDateToApi(date);
+                if (
+                  moment(date).isoWeekday() == 6 ||
+                  moment(date).isoWeekday() == 7
+                ) {
+                  Alert.alert(
+                    'Oops',
+                    'Please select only weekday date.',
+                    [{text: 'OK', onPress: async () => {}}],
+                    {cancelable: false},
+                  );
+                } else {
+                  setselectedFromDate(reqFormatDt);
+                  setpassFromDateToApi(date);
+                }
               }
             } else if (dateType == 'TD') {
               if (

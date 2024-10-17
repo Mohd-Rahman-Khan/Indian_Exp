@@ -79,6 +79,24 @@ const Home = ({navigation, route}) => {
     requestPermission();
   }, []);
 
+  // useEffect(() => {
+  //   enumerateDaysBetweenDates('2024-10-10', '2024-10-16');
+  // }, []);
+
+  // var enumerateDaysBetweenDates = function (startDate, endDate) {
+  //   var dates = [];
+
+  //   var currDate = moment(startDate).startOf('day');
+  //   var lastDate = moment(endDate).startOf('day');
+
+  //   while (currDate.add(1, 'days').diff(lastDate) <= 0) {
+  //     console.log(currDate.toDate());
+  //     dates.push(currDate.clone().toDate());
+  //   }
+
+  //   console.log('enumerateDaysBetweenDates', dates);
+  // };
+
   const getRigion = async () => {
     const token = await AsyncStorage.getItem('InExToken');
     const userId = await AsyncStorage.getItem('InExUserId');

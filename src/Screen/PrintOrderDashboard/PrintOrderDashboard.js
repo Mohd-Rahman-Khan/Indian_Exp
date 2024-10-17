@@ -226,7 +226,7 @@ export default function PrintOrderDashboard({route, navigation}) {
             setshowCalender(!showCalender);
             setselectFromDate(false);
           }}
-          maxDate={moment(new Date()).format('YYYY-MM-DD')}
+          //smaxDate={moment(new Date()).format('YYYY-MM-DD')}
           setselectedDate={date => {
             //setSelectedDate(moment(date).format("DD-MM-YYYY"));
             setshowCalender(!showCalender);
@@ -364,15 +364,7 @@ export default function PrintOrderDashboard({route, navigation}) {
             style={styles.addIconContainer}>
             <Image style={styles.plusIcon} source={images.plusIcon} />
           </TouchableOpacity>
-        ) : (
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('PrintOrder');
-            }}
-            style={styles.addIconContainer}>
-            <Image style={styles.plusIcon} source={images.plusIcon} />
-          </TouchableOpacity>
-        )}
+        ) : null}
       </View>
     </View>
   );
